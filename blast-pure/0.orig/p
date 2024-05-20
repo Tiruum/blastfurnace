@@ -1,0 +1,49 @@
+/***********************************************\
+| Internal Field: Pressure                      |
+\***********************************************/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      p;
+}
+
+dimensions      [0 2 -2 0 0 0 0];
+internalField   uniform 101325;
+
+boundaryField
+{
+    inlet_x
+    {
+        type            zeroGradient;
+    }
+    
+    inlet_-x
+    {
+        type            zeroGradient;
+    }
+    
+    inlet_y
+    {
+        type            zeroGradient;
+    }
+    
+    inlet_-y
+    {
+        type            zeroGradient;
+    }
+    
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 101325;
+    }
+    
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+

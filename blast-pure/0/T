@@ -1,0 +1,53 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0];
+internalField   uniform 300; // Начальная температура в Кельвинах
+
+boundaryField
+{
+    inlet_x
+    {
+        type            fixedValue;
+        value           uniform 800; // Температура на входе
+    }
+    inlet_-x
+    {
+        type            fixedValue;
+        value           uniform 800; // Температура на входе
+    }
+    inlet_y
+    {
+        type            fixedValue;
+        value           uniform 800; // Температура на входе
+    }
+    inlet_-y
+    {
+        type            fixedValue;
+        value           uniform 800; // Температура на входе
+    }
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      $internalField;
+        value           $internalField;
+    }
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+

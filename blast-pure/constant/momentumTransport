@@ -1,0 +1,33 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website: https://www.openfoam.com
+    \\  /    A nd           | Version: 8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      momentumTransport;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+simulationType RAS; // or 'RAS' or 'LES' depending on your simulation
+transportModel Newtonian;
+nu             nu [ 0 2 -1 0 0 0 0 ] 1e-5;
+
+RAS
+{
+    RASModel        kEpsilon;  // Или другой тип модели, например, kOmegaSST
+    turbulence      off;
+    printCoeffs     on;
+}
+
+
+
+
+// ************************************************************************* //
+

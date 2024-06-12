@@ -9,13 +9,49 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       uniformDimensionedVectorField;
-    object      g;
+    class       volScalarField;
+    object      p_rgh;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -2 0 0 0 0];
-value           (0 0 -9.81);
+dimensions      [1 -1 -2 0 0 0 0];
+
+internalField   uniform 1e5;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedFluxPressure;
+        value           $internalField;
+    }
+
+    outlet
+    {
+        type            prghTotalPressure;
+        p0              $internalField;
+        U               U.air;
+        phi             phi.air;
+        rho             thermo:rho.air;
+        value           $internalField;
+    }
+
+    walls
+    {
+        type            fixedFluxPressure;
+        value           $internalField;
+    }
+
+    empty
+    {
+        type            empty;
+    }
+
+    symmetry
+    {
+        type            symmetryPlane;
+    }
+}
 
 
 // ************************************************************************* //

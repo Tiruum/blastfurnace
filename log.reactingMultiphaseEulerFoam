@@ -1,0 +1,1385 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _e651d635-20240208 OPENFOAM=2312 patch=240220 version=v2312
+Arch   : "LSB;label=32;scalar=64"
+Exec   : reactingMultiphaseEulerFoam
+Date   : Jun 07 2024
+Time   : 19:34:28
+Host   : hp-pavilion
+PID    : 50633
+I/O    : uncollated
+Case   : /home/timur/Desktop/blast2d-multi
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+PIMPLE: Operating solver in PISO mode
+
+
+Reading g
+
+Reading hRef
+Creating phaseSystem
+
+Selecting multiphaseSystem basicMultiphaseSystem
+Selecting phaseModel for air: purePhaseModel
+Selecting diameterModel for phase air: constant
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.air
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Selecting phaseModel for coal: purePhaseModel
+Selecting diameterModel for phase coal: constant
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.coal
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+Selecting phaseModel for iron: purePhaseModel
+Selecting diameterModel for phase iron: constant
+Selecting thermodynamics package 
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+Calculating face flux field phi.iron
+Selecting turbulence model type laminar
+Selecting laminar stress model Stokes
+No MRF models present
+
+Selecting default blending method: linear
+Selecting surfaceTensionModel for (air and coal): constant
+Selecting surfaceTensionModel for (coal and iron): constant
+Selecting surfaceTensionModel for (air and iron): constant
+Selecting dragModel for (coal in air): Ergun
+Selecting swarmCorrection for (coal in air): none
+Selecting dragModel for (iron in air): Ergun
+Selecting swarmCorrection for (iron in air): none
+Selecting dragModel for (iron in coal): Ergun
+Selecting swarmCorrection for (iron in coal): none
+Selecting dragModel for (air in coal): Ergun
+Selecting swarmCorrection for (air in coal): none
+Selecting dragModel for (coal in iron): Ergun
+Selecting swarmCorrection for (coal in iron): none
+Selecting dragModel for (air in iron): Ergun
+Selecting swarmCorrection for (air in iron): none
+Selecting virtualMassModel for (coal in air): constantCoefficient
+Selecting virtualMassModel for (iron in air): constantCoefficient
+Selecting virtualMassModel for (iron in coal): constantCoefficient
+Selecting virtualMassModel for (air in coal): constantCoefficient
+Selecting virtualMassModel for (coal in iron): constantCoefficient
+Selecting virtualMassModel for (air in iron): constantCoefficient
+Selecting heatTransferModel for (coal in air): RanzMarshall
+Selecting heatTransferModel for (iron in air): RanzMarshall
+Selecting heatTransferModel for (iron in coal): RanzMarshall
+Selecting heatTransferModel for (air in coal): RanzMarshall
+Selecting heatTransferModel for (coal in iron): RanzMarshall
+Selecting heatTransferModel for (air in iron): RanzMarshall
+Calculating field g.h
+
+Reading field p_rgh
+
+Courant Number mean: 5.65974e-06 max: 0.0536588
+
+Starting time loop
+
+Courant Number mean: 5.65974e-06 max: 0.0536588
+deltaT = 0.0125
+Time = 0.0125
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 0 1
+coal fraction, min, max = 0.0309863 0 1
+iron fraction, min, max = 0.0925303 0 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 0 1
+coal fraction, min, max = 0.0309863 0 1
+iron fraction, min, max = 0.0925303 0 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 1, Final residual = 3.70865e-12, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000902602, Final residual = 0.000334425, No Iterations 10
+smoothSolver:  Solving for e.iron, Initial residual = 0.000564891, Final residual = 0.000379172, No Iterations 10
+air min/max T 300 - 1800
+coal min/max T 300 - 300
+iron min/max T 300 - 300
+GAMG:  Solving for p_rgh, Initial residual = 5.84174e-05, Final residual = 5.83367e-07, No Iterations 11
+GAMG:  Solving for p_rgh, Initial residual = 2.11028e-06, Final residual = 7.88892e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 2.3829e-07, Final residual = 5.42723e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.41596e-08, Final residual = 5.41596e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.46604e-08, Final residual = 5.46604e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.46604e-08, Final residual = 5.46604e-08, No Iterations 0
+ExecutionTime = 0.39 s  ClockTime = 1 s
+
+Courant Number mean: 0.525414 max: 6.93227
+deltaT = 0.000360082
+Time = 0.0128601
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 9.06009e-16 1
+coal fraction, min, max = 0.0309863 9.99956e-16 1
+iron fraction, min, max = 0.0925303 9.99968e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 9.06008e-16 1
+coal fraction, min, max = 0.0309863 9.99955e-16 1
+iron fraction, min, max = 0.0925303 9.99956e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.00607379, Final residual = 5.09094e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.999992, Final residual = 4.35746e-09, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.999973, Final residual = 1.13069e-08, No Iterations 10
+air min/max T 299.976 - 1800
+coal min/max T 300 - 345.887
+iron min/max T 300 - 345.887
+GAMG:  Solving for p_rgh, Initial residual = 2.31304e-07, Final residual = 2.20478e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 9.25597e-10, Final residual = 9.25597e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.53033e-08, Final residual = 3.53033e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.53033e-08, Final residual = 3.53033e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.46489e-08, Final residual = 3.46489e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.46489e-08, Final residual = 3.46489e-08, No Iterations 0
+ExecutionTime = 0.63 s  ClockTime = 1 s
+
+Courant Number mean: 2.67745e-05 max: 0.00394426
+deltaT = 0.000431386
+Time = 0.0132915
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1e-15 1
+coal fraction, min, max = 0.0309863 9.99962e-16 1
+iron fraction, min, max = 0.0925304 9.99962e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1e-15 1
+coal fraction, min, max = 0.0309863 9.99948e-16 1
+iron fraction, min, max = 0.0925305 9.99948e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0138751, Final residual = 8.42785e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000400064, Final residual = 6.7242e-15, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000100542, Final residual = 5.25716e-15, No Iterations 1
+air min/max T 299.924 - 1800
+coal min/max T 299.598 - 347.714
+iron min/max T 299.975 - 347.714
+GAMG:  Solving for p_rgh, Initial residual = 6.44792e-07, Final residual = 2.00875e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.64381e-08, Final residual = 8.64381e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.39161e-07, Final residual = 2.09764e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.03284e-08, Final residual = 4.03284e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 8.58118e-08, Final residual = 8.58118e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 8.58118e-08, Final residual = 8.58118e-08, No Iterations 0
+ExecutionTime = 0.86 s  ClockTime = 1 s
+
+Courant Number mean: 0.00750028 max: 0.250781
+deltaT = 0.000344081
+Time = 0.0136355
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 4.1516e-14 1
+coal fraction, min, max = 0.0309863 9.99969e-16 1
+iron fraction, min, max = 0.0925305 9.99969e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 8.20368e-14 1
+coal fraction, min, max = 0.0309863 9.99958e-16 1
+iron fraction, min, max = 0.0925305 9.99958e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.111397, Final residual = 1.23262e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000499848, Final residual = 1.15753e-14, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000963274, Final residual = 4.49876e-15, No Iterations 1
+air min/max T 299.882 - 1800
+coal min/max T 298.319 - 350.254
+iron min/max T 299.924 - 350.254
+GAMG:  Solving for p_rgh, Initial residual = 7.2162e-07, Final residual = 1.71916e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.44227e-09, Final residual = 5.44227e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.2173e-08, Final residual = 2.2173e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.2173e-08, Final residual = 2.2173e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.21765e-08, Final residual = 2.21765e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.21765e-08, Final residual = 2.21765e-08, No Iterations 0
+ExecutionTime = 1.08 s  ClockTime = 1 s
+
+Courant Number mean: 2.77991e-05 max: 0.00380567
+deltaT = 0.000413227
+Time = 0.0140488
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 8.20479e-14 1
+coal fraction, min, max = 0.0309863 9.99962e-16 1
+iron fraction, min, max = 0.0925305 9.99962e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 8.2059e-14 1
+coal fraction, min, max = 0.0309864 9.99949e-16 1
+iron fraction, min, max = 0.0925306 9.99949e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.00926895, Final residual = 1.84111e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.00157607, Final residual = 3.00761e-14, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000713715, Final residual = 4.50927e-15, No Iterations 1
+air min/max T 299.83 - 1800
+coal min/max T 299.433 - 352.276
+iron min/max T 299.882 - 352.276
+GAMG:  Solving for p_rgh, Initial residual = 4.15797e-07, Final residual = 6.33475e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.58978e-08, Final residual = 1.58978e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.52999e-08, Final residual = 5.52999e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.52999e-08, Final residual = 5.52999e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.52775e-08, Final residual = 5.52775e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.52775e-08, Final residual = 5.52775e-08, No Iterations 0
+ExecutionTime = 1.32 s  ClockTime = 2 s
+
+Courant Number mean: 0.00184201 max: 0.164611
+deltaT = 0.000464601
+Time = 0.0145134
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1.42822e-13 1
+coal fraction, min, max = 0.0309863 9.99956e-16 1
+iron fraction, min, max = 0.0925306 9.99895e-16 1
+Phase-sum volume fraction, min, max = 1 0.999995 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1.64886e-13 1
+coal fraction, min, max = 0.0309862 9.99942e-16 1
+iron fraction, min, max = 0.0925306 9.99784e-16 1
+Phase-sum volume fraction, min, max = 1 0.999998 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.113647, Final residual = 4.18526e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.00318823, Final residual = 3.8564e-14, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000758011, Final residual = 9.31536e-15, No Iterations 1
+air min/max T 299.587 - 1800
+coal min/max T 297.157 - 354.726
+iron min/max T 299.83 - 354.726
+GAMG:  Solving for p_rgh, Initial residual = 8.44524e-07, Final residual = 9.62738e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.38472e-08, Final residual = 4.38472e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.29086e-06, Final residual = 2.28849e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.32394e-08, Final residual = 1.32394e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 9.81585e-07, Final residual = 2.84013e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.94599e-09, Final residual = 7.94599e-09, No Iterations 0
+ExecutionTime = 1.58 s  ClockTime = 2 s
+
+Courant Number mean: 0.000241437 max: 0.0631746
+deltaT = 0.000558736
+Time = 0.0150721
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 3.63298e-13 1
+coal fraction, min, max = 0.0309862 9.99945e-16 1
+iron fraction, min, max = 0.0925306 9.99473e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 5.24246e-13 1
+coal fraction, min, max = 0.0309863 9.99928e-16 1
+iron fraction, min, max = 0.0925306 9.98948e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0237192, Final residual = 1.89642e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000105155, Final residual = 2.19949e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.00137287, Final residual = 5.27499e-15, No Iterations 1
+air min/max T 299.679 - 1800
+coal min/max T 297.555 - 357.553
+iron min/max T 299.766 - 357.553
+GAMG:  Solving for p_rgh, Initial residual = 1.34553e-05, Final residual = 1.0318e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.39217e-09, Final residual = 8.39217e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.23911e-05, Final residual = 9.48009e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.29366e-09, Final residual = 7.29366e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.24022e-05, Final residual = 1.04881e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.96072e-09, Final residual = 8.96072e-09, No Iterations 0
+ExecutionTime = 1.84 s  ClockTime = 2 s
+
+Courant Number mean: 0.00760269 max: 0.496945
+deltaT = 0.000224677
+Time = 0.0152968
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 6.2149e-12 1
+coal fraction, min, max = 0.0309865 9.99962e-16 1
+iron fraction, min, max = 0.0925306 9.99977e-16 1
+Phase-sum volume fraction, min, max = 1 0.999786 1.00001
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1.1968e-11 1
+coal fraction, min, max = 0.0309868 9.95972e-16 1
+iron fraction, min, max = 0.0925306 9.9997e-16 1
+Phase-sum volume fraction, min, max = 1 0.999785 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.081337, Final residual = 3.139e-10, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000194687, Final residual = 1.14725e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.00168453, Final residual = 3.88121e-15, No Iterations 1
+air min/max T 299.593 - 1800
+coal min/max T 299.679 - 361.108
+iron min/max T 299.679 - 361.108
+GAMG:  Solving for p_rgh, Initial residual = 1.14709e-05, Final residual = 1.73035e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 9.15695e-10, Final residual = 9.15695e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 7.45223e-07, Final residual = 7.61888e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.20855e-10, Final residual = 7.20855e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.08956e-06, Final residual = 4.54607e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.10368e-10, Final residual = 4.10368e-10, No Iterations 0
+ExecutionTime = 2.08 s  ClockTime = 2 s
+
+Courant Number mean: 0.000346427 max: 0.0378279
+deltaT = 0.000269755
+Time = 0.0155665
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 5.45135e-11 1
+coal fraction, min, max = 0.0309868 9.13608e-16 1
+iron fraction, min, max = 0.0925306 9.99923e-16 1
+Phase-sum volume fraction, min, max = 1 0.999982 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 5.45135e-11 1
+coal fraction, min, max = 0.0309868 3.46976e-16 1
+iron fraction, min, max = 0.0925306 9.99846e-16 1
+Phase-sum volume fraction, min, max = 1 0.999989 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0268035, Final residual = 3.7221e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000444082, Final residual = 4.73991e-12, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.00152507, Final residual = 3.77611e-15, No Iterations 1
+air min/max T 299.399 - 1800
+coal min/max T 299.637 - 362.622
+iron min/max T 299.637 - 362.622
+GAMG:  Solving for p_rgh, Initial residual = 2.15105e-06, Final residual = 1.02771e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.29543e-09, Final residual = 1.29543e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.68101e-06, Final residual = 8.30773e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.78841e-10, Final residual = 7.78841e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.54009e-06, Final residual = 5.16533e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.69084e-10, Final residual = 5.69084e-10, No Iterations 0
+ExecutionTime = 2.34 s  ClockTime = 3 s
+
+Courant Number mean: 0.0011818 max: 0.112284
+deltaT = 0.000317419
+Time = 0.015884
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.81355e-10 1
+coal fraction, min, max = 0.0309878 5.00938e-16 1
+iron fraction, min, max = 0.0925305 9.9987e-16 1
+Phase-sum volume fraction, min, max = 1 0.999942 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.87648 2.38208e-10 1
+coal fraction, min, max = 0.0309887 -1.4659e-16 1
+iron fraction, min, max = 0.0925305 9.9974e-16 1
+Phase-sum volume fraction, min, max = 1 0.999917 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.142235, Final residual = 5.3166e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.000465567, Final residual = 1.15881e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000417763, Final residual = 3.54007e-15, No Iterations 1
+air min/max T 299.375 - 1800
+coal min/max T 299.315 - 364.512
+iron min/max T 299.577 - 364.512
+GAMG:  Solving for p_rgh, Initial residual = 6.75211e-06, Final residual = 2.79375e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.67602e-09, Final residual = 5.67602e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.46544e-06, Final residual = 1.00273e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.80799e-10, Final residual = 8.80799e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.71214e-06, Final residual = 1.23271e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.61289e-09, Final residual = 1.61289e-09, No Iterations 0
+ExecutionTime = 2.63 s  ClockTime = 3 s
+
+Courant Number mean: 0.000208591 max: 0.022445
+deltaT = 0.000380616
+Time = 0.0162646
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.87648 3.08258e-10 1
+coal fraction, min, max = 0.0309891 9.27515e-16 1
+iron fraction, min, max = 0.0925305 9.99923e-16 1
+Phase-sum volume fraction, min, max = 1 0.999991 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.87648 3.08275e-10 1
+coal fraction, min, max = 0.0309892 8.59635e-16 1
+iron fraction, min, max = 0.0925304 9.99847e-16 1
+Phase-sum volume fraction, min, max = 1 0.999995 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0150329, Final residual = 4.75401e-09, No Iterations 1
+smoothSolver:  Solving for e.coal, Initial residual = 0.00240165, Final residual = 4.23757e-12, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000437265, Final residual = 3.28842e-15, No Iterations 1
+air min/max T 295.883 - 1800
+coal min/max T 299.438 - 366.791
+iron min/max T 299.496 - 366.791
+GAMG:  Solving for p_rgh, Initial residual = 3.17945e-06, Final residual = 1.54267e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.80189e-09, Final residual = 1.80189e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.89746e-06, Final residual = 6.93598e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 6.87162e-10, Final residual = 6.87162e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.18163e-06, Final residual = 7.15126e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.21361e-10, Final residual = 8.21361e-10, No Iterations 0
+ExecutionTime = 2.86 s  ClockTime = 3 s
+
+Courant Number mean: 0.000737629 max: 0.0998453
+deltaT = 0.000457571
+Time = 0.0167222
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.87648 3.08414e-10 1
+coal fraction, min, max = 0.0309892 -6.54445e-14 1
+iron fraction, min, max = 0.0925304 9.99889e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.87648 3.08554e-10 1
+coal fraction, min, max = 0.0309892 -1.44253e-16 1
+iron fraction, min, max = 0.0925303 9.99729e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0625934, Final residual = 1.33626e-13, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.00105902, Final residual = 2.57962e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000277491, Final residual = 3.59377e-15, No Iterations 1
+air min/max T 299.245 - 1800
+coal min/max T 299.388 - 369.62
+iron min/max T 299.388 - 369.62
+GAMG:  Solving for p_rgh, Initial residual = 3.09723e-06, Final residual = 1.94216e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.15543e-09, Final residual = 2.15543e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.61945e-06, Final residual = 1.45906e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.25857e-09, Final residual = 1.25857e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 8.84151e-07, Final residual = 1.52198e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.63452e-09, Final residual = 1.63452e-09, No Iterations 0
+ExecutionTime = 3.08 s  ClockTime = 3 s
+
+Courant Number mean: 0.000136924 max: 0.0201908
+deltaT = 0.000547881
+Time = 0.01727
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 3.13335e-10 1
+coal fraction, min, max = 0.0309892 -4.725e-15 1
+iron fraction, min, max = 0.0925303 9.9988e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 3.18117e-10 1
+coal fraction, min, max = 0.0309892 -9.51881e-15 1
+iron fraction, min, max = 0.0925302 9.99761e-16 1
+Phase-sum volume fraction, min, max = 1 1 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0221056, Final residual = 3.44177e-13, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000474561, Final residual = 1.58254e-12, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000287375, Final residual = 3.52798e-15, No Iterations 1
+air min/max T 296.406 - 1800
+coal min/max T 299.245 - 373.176
+iron min/max T 299.245 - 373.176
+GAMG:  Solving for p_rgh, Initial residual = 2.37006e-06, Final residual = 3.95224e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.11429e-09, Final residual = 4.11429e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 4.50578e-07, Final residual = 1.36174e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.30463e-09, Final residual = 1.30463e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.59605e-07, Final residual = 1.08551e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.12743e-09, Final residual = 1.12743e-09, No Iterations 0
+ExecutionTime = 3.31 s  ClockTime = 4 s
+
+Courant Number mean: 0.000547018 max: 0.0666612
+deltaT = 0.000656587
+Time = 0.0179266
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 3.183e-10 1
+coal fraction, min, max = 0.0309892 -1.27991e-14 1
+iron fraction, min, max = 0.0925302 9.99845e-16 1
+Phase-sum volume fraction, min, max = 1 0.999999 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 3.18482e-10 1
+coal fraction, min, max = 0.0309892 -1.9225e-14 1
+iron fraction, min, max = 0.0925301 9.99691e-16 1
+Phase-sum volume fraction, min, max = 1 0.999999 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0611694, Final residual = 9.9257e-13, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000192005, Final residual = 1.31015e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000198664, Final residual = 3.90983e-15, No Iterations 1
+air min/max T 298.817 - 1800
+coal min/max T 299.059 - 377.674
+iron min/max T 299.059 - 377.674
+GAMG:  Solving for p_rgh, Initial residual = 2.5609e-06, Final residual = 3.51968e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.82616e-09, Final residual = 3.82616e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.25294e-06, Final residual = 2.27556e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.11442e-09, Final residual = 2.11442e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 9.57923e-07, Final residual = 1.69714e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.65844e-09, Final residual = 1.65844e-09, No Iterations 0
+ExecutionTime = 3.56 s  ClockTime = 4 s
+
+Courant Number mean: 0.00016735 max: 0.0341508
+deltaT = 0.000789167
+Time = 0.0187158
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 6.96318e-10 1
+coal fraction, min, max = 0.0309892 -3.0587e-14 0.999999
+iron fraction, min, max = 0.09253 9.99765e-16 1
+Phase-sum volume fraction, min, max = 1 0.999997 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.0742e-09 1
+coal fraction, min, max = 0.0309892 -1.77805e-15 0.999999
+iron fraction, min, max = 0.0925299 9.99532e-16 1
+Phase-sum volume fraction, min, max = 1 0.999997 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0227258, Final residual = 2.56107e-12, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000209916, Final residual = 5.45495e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.00020762, Final residual = 4.21074e-15, No Iterations 1
+air min/max T 293.651 - 1800
+coal min/max T 298.817 - 383.411
+iron min/max T 298.817 - 383.411
+GAMG:  Solving for p_rgh, Initial residual = 2.8709e-06, Final residual = 5.54684e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.56282e-09, Final residual = 5.56282e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.88136e-07, Final residual = 2.08706e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.97568e-09, Final residual = 1.97568e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.63351e-07, Final residual = 1.3055e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.28557e-09, Final residual = 1.28557e-09, No Iterations 0
+ExecutionTime = 3.8 s  ClockTime = 4 s
+
+Courant Number mean: 0.000365041 max: 0.0307603
+deltaT = 0.000945165
+Time = 0.019661
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.07675e-09 1
+coal fraction, min, max = 0.0309892 -3.66139e-15 0.999999
+iron fraction, min, max = 0.0925298 9.99772e-16 1
+Phase-sum volume fraction, min, max = 1 0.999994 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.07932e-09 1
+coal fraction, min, max = 0.0309892 -6.2028e-15 0.999999
+iron fraction, min, max = 0.0925297 9.99546e-16 1
+Phase-sum volume fraction, min, max = 1 0.999996 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0598972, Final residual = 8.64941e-12, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000189747, Final residual = 1.02225e-10, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000187656, Final residual = 3.99159e-15, No Iterations 1
+air min/max T 298.136 - 1800
+coal min/max T 298.509 - 390.79
+iron min/max T 298.509 - 390.79
+GAMG:  Solving for p_rgh, Initial residual = 2.08765e-06, Final residual = 7.15809e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.22419e-09, Final residual = 7.22419e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.13434e-07, Final residual = 2.83115e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.64147e-09, Final residual = 2.64147e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.13909e-07, Final residual = 1.95841e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.8963e-09, Final residual = 1.8963e-09, No Iterations 0
+ExecutionTime = 4.04 s  ClockTime = 4 s
+
+Courant Number mean: 0.000180167 max: 0.0307464
+deltaT = 0.00113154
+Time = 0.0207925
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.07947e-09 1
+coal fraction, min, max = 0.0309892 -3.56974e-13 0.999998
+iron fraction, min, max = 0.0925296 9.99825e-16 1
+Phase-sum volume fraction, min, max = 1 0.999994 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.07963e-09 1
+coal fraction, min, max = 0.0309892 -1.22191e-13 0.999998
+iron fraction, min, max = 0.0925295 9.99678e-16 1
+Phase-sum volume fraction, min, max = 1 0.999995 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0263298, Final residual = 1.89859e-11, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000187372, Final residual = 6.8782e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000184349, Final residual = 5.25814e-15, No Iterations 1
+air min/max T 297.73 - 1800
+coal min/max T 298.136 - 400.246
+iron min/max T 298.136 - 400.246
+GAMG:  Solving for p_rgh, Initial residual = 1.84062e-06, Final residual = 7.76919e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 7.85919e-09, Final residual = 7.85919e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 9.71834e-07, Final residual = 2.63135e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.51953e-09, Final residual = 2.51953e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.3417e-07, Final residual = 1.5153e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.50131e-09, Final residual = 1.50131e-09, No Iterations 0
+ExecutionTime = 4.27 s  ClockTime = 4 s
+
+Courant Number mean: 0.000314487 max: 0.0256875
+deltaT = 0.00136565
+Time = 0.0221581
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876481 1.08294e-09 1
+coal fraction, min, max = 0.0309892 -6.862e-14 0.999998
+iron fraction, min, max = 0.0925293 9.99745e-16 1
+Phase-sum volume fraction, min, max = 1 0.999995 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876482 1.08629e-09 1
+coal fraction, min, max = 0.0309892 -3.02745e-14 0.999998
+iron fraction, min, max = 0.0925292 9.99703e-16 1
+Phase-sum volume fraction, min, max = 1 0.999996 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0440236, Final residual = 4.36929e-11, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.00022009, Final residual = 1.37236e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000150164, Final residual = 3.90731e-15, No Iterations 1
+air min/max T 297.375 - 1800
+coal min/max T 297.73 - 412.283
+iron min/max T 297.73 - 412.283
+GAMG:  Solving for p_rgh, Initial residual = 2.60064e-06, Final residual = 1.13997e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.25343e-08, Final residual = 1.25343e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.97447e-07, Final residual = 3.28628e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.19267e-09, Final residual = 3.19267e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.1621e-07, Final residual = 2.01903e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.00158e-09, Final residual = 2.00158e-09, No Iterations 0
+ExecutionTime = 4.48 s  ClockTime = 5 s
+
+Courant Number mean: 0.000241457 max: 0.030942
+deltaT = 0.00162171
+Time = 0.0237798
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876482 1.52636e-09 1
+coal fraction, min, max = 0.0309892 -7.75847e-13 0.999998
+iron fraction, min, max = 0.092529 9.99682e-16 1
+Phase-sum volume fraction, min, max = 1 0.999987 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876482 1.96652e-09 1
+coal fraction, min, max = 0.0309891 -1.04947e-12 0.999998
+iron fraction, min, max = 0.0925288 9.99568e-16 1
+Phase-sum volume fraction, min, max = 1 0.999992 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0263012, Final residual = 7.49791e-11, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.00027228, Final residual = 1.06386e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000150082, Final residual = 1.41587e-14, No Iterations 1
+air min/max T 295.971 - 1800
+coal min/max T 297.375 - 427.545
+iron min/max T 297.375 - 427.545
+GAMG:  Solving for p_rgh, Initial residual = 2.21082e-06, Final residual = 1.57973e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.74693e-08, Final residual = 1.74693e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.29611e-07, Final residual = 6.10981e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.87294e-09, Final residual = 5.87294e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.82779e-07, Final residual = 3.42859e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.3811e-09, Final residual = 3.3811e-09, No Iterations 0
+ExecutionTime = 4.67 s  ClockTime = 5 s
+
+Courant Number mean: 0.000329324 max: 0.0363321
+deltaT = 0.00195436
+Time = 0.0257342
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876482 1.97718e-09 1
+coal fraction, min, max = 0.0309891 -1.24778e-13 0.999998
+iron fraction, min, max = 0.0925285 9.99624e-16 1
+Phase-sum volume fraction, min, max = 1 0.999983 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 1.98791e-09 1
+coal fraction, min, max = 0.030989 -1.57435e-13 0.999998
+iron fraction, min, max = 0.0925283 9.99281e-16 1
+Phase-sum volume fraction, min, max = 1 0.999992 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0314311, Final residual = 1.55962e-10, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000274855, Final residual = 2.89492e-12, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 8.56921e-05, Final residual = 1.00407e-14, No Iterations 1
+air min/max T 296.717 - 1800
+coal min/max T 297.18 - 446.362
+iron min/max T 297.18 - 446.362
+GAMG:  Solving for p_rgh, Initial residual = 2.29036e-06, Final residual = 2.18987e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.47917e-08, Final residual = 2.47917e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.34911e-07, Final residual = 9.60575e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 9.29221e-09, Final residual = 9.29221e-09, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 7.47196e-08, Final residual = 7.47196e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 7.47196e-08, Final residual = 7.47196e-08, No Iterations 0
+ExecutionTime = 4.87 s  ClockTime = 5 s
+
+Courant Number mean: 0.000346528 max: 0.0437868
+deltaT = 0.00232081
+Time = 0.028055
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 2.50547e-09 1
+coal fraction, min, max = 0.0309889 -8.05987e-14 0.999998
+iron fraction, min, max = 0.0925279 9.99416e-16 1
+Phase-sum volume fraction, min, max = 1 0.999976 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876483 3.02316e-09 1
+coal fraction, min, max = 0.0309889 -9.18674e-14 0.999998
+iron fraction, min, max = 0.0925276 9.99151e-16 1
+Phase-sum volume fraction, min, max = 1 0.999991 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0291627, Final residual = 3.33995e-10, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.00024402, Final residual = 5.46939e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 9.57945e-05, Final residual = 7.11829e-15, No Iterations 1
+air min/max T 296.011 - 1800
+coal min/max T 296.717 - 469.911
+iron min/max T 296.717 - 469.911
+GAMG:  Solving for p_rgh, Initial residual = 2.57649e-06, Final residual = 3.56833e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.71036e-08, Final residual = 3.71036e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.19504e-07, Final residual = 1.3125e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.33161e-08, Final residual = 1.33161e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.4391e-08, Final residual = 3.4391e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.4391e-08, Final residual = 3.4391e-08, No Iterations 0
+ExecutionTime = 5.07 s  ClockTime = 5 s
+
+Courant Number mean: 0.00046498 max: 0.0530674
+deltaT = 0.00276712
+Time = 0.0308221
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 3.24779e-09 1
+coal fraction, min, max = 0.0309887 -1.01661e-14 0.999998
+iron fraction, min, max = 0.0925274 9.9898e-16 1
+Phase-sum volume fraction, min, max = 1 0.999989 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 3.47457e-09 1
+coal fraction, min, max = 0.0309886 -1.74414e-14 0.999998
+iron fraction, min, max = 0.0925271 9.98547e-16 1
+Phase-sum volume fraction, min, max = 1 0.999991 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0326702, Final residual = 8.68501e-10, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000198822, Final residual = 1.98581e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 5.39201e-05, Final residual = 3.61126e-15, No Iterations 1
+air min/max T 295.569 - 1800
+coal min/max T 296.011 - 499.566
+iron min/max T 296.011 - 499.566
+GAMG:  Solving for p_rgh, Initial residual = 2.98476e-06, Final residual = 5.0085e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.21343e-08, Final residual = 5.21343e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.05439e-07, Final residual = 1.6119e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.54393e-08, Final residual = 1.54393e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.95271e-08, Final residual = 3.95271e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.95271e-08, Final residual = 3.95271e-08, No Iterations 0
+ExecutionTime = 5.27 s  ClockTime = 5 s
+
+Courant Number mean: 0.000542302 max: 0.065372
+deltaT = 0.00329418
+Time = 0.0341163
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 3.68889e-09 1
+coal fraction, min, max = 0.0309885 -3.42654e-13 0.999998
+iron fraction, min, max = 0.092527 9.98366e-16 1
+Phase-sum volume fraction, min, max = 1 0.999978 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876485 3.90327e-09 1
+coal fraction, min, max = 0.0309885 -3.64962e-11 0.999998
+iron fraction, min, max = 0.0925269 9.97687e-16 1
+Phase-sum volume fraction, min, max = 1 0.999988 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0352291, Final residual = 2.21914e-09, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000209708, Final residual = 4.89854e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 4.96383e-05, Final residual = 1.0948e-14, No Iterations 1
+air min/max T 295.1 - 1800
+coal min/max T 295.569 - 538.286
+iron min/max T 295.569 - 538.286
+GAMG:  Solving for p_rgh, Initial residual = 3.28389e-06, Final residual = 5.38905e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.87907e-08, Final residual = 5.87907e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.45362e-06, Final residual = 1.56375e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.45461e-08, Final residual = 1.45461e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 7.73734e-08, Final residual = 7.73734e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 7.73734e-08, Final residual = 7.73734e-08, No Iterations 0
+ExecutionTime = 5.47 s  ClockTime = 6 s
+
+Courant Number mean: 0.000720268 max: 0.0808294
+deltaT = 0.00387551
+Time = 0.0379918
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 3.9561e-09 1
+coal fraction, min, max = 0.0309885 -1.06292e-12 0.999997
+iron fraction, min, max = 0.092527 9.97475e-16 1
+Phase-sum volume fraction, min, max = 1 0.999986 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 4.01034e-09 1
+coal fraction, min, max = 0.0309886 -1.21672e-12 0.999997
+iron fraction, min, max = 0.0925272 9.96461e-16 1
+Phase-sum volume fraction, min, max = 1 0.999983 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0397811, Final residual = 5.37326e-09, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.000194568, Final residual = 1.85305e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 5.43112e-05, Final residual = 2.59121e-13, No Iterations 1
+air min/max T 294.639 - 1800
+coal min/max T 295.1 - 590.013
+iron min/max T 295.1 - 590.013
+GAMG:  Solving for p_rgh, Initial residual = 3.36798e-06, Final residual = 7.1012e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.424e-08, Final residual = 8.424e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 3.7884e-07, Final residual = 1.48176e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.44309e-08, Final residual = 1.44309e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.92445e-08, Final residual = 6.92445e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.92445e-08, Final residual = 6.92445e-08, No Iterations 0
+ExecutionTime = 5.67 s  ClockTime = 6 s
+
+Courant Number mean: 0.000889251 max: 0.0993782
+deltaT = 0.00476986
+Time = 0.0427617
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 5.42049e-09 1
+coal fraction, min, max = 0.0309887 9.87884e-16 0.999997
+iron fraction, min, max = 0.0925274 9.95566e-16 1
+Phase-sum volume fraction, min, max = 1 0.999996 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 6.8313e-09 1
+coal fraction, min, max = 0.0309888 9.8278e-16 0.999997
+iron fraction, min, max = 0.0925275 9.94034e-16 1
+Phase-sum volume fraction, min, max = 1 0.999997 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0399438, Final residual = 1.39727e-11, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000150526, Final residual = 2.21769e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 6.41062e-05, Final residual = 2.2017e-13, No Iterations 1
+air min/max T 294.45 - 1800
+coal min/max T 294.639 - 659.125
+iron min/max T 294.639 - 659.125
+GAMG:  Solving for p_rgh, Initial residual = 4.2804e-06, Final residual = 7.74304e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.08347e-07, Final residual = 1.3341e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.37141e-06, Final residual = 2.66815e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.44455e-08, Final residual = 2.44455e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.75265e-07, Final residual = 2.02204e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.11481e-08, Final residual = 2.11481e-08, No Iterations 0
+ExecutionTime = 5.87 s  ClockTime = 6 s
+
+Courant Number mean: 0.00124274 max: 0.129225
+deltaT = 0.00572383
+Time = 0.0484855
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 9.05722e-09 1
+coal fraction, min, max = 0.0309888 9.82104e-16 0.999995
+iron fraction, min, max = 0.0925275 9.92745e-16 1
+Phase-sum volume fraction, min, max = 1 0.999995 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876484 1.13439e-08 1
+coal fraction, min, max = 0.0309888 9.75398e-16 0.999994
+iron fraction, min, max = 0.0925274 9.90627e-16 1
+Phase-sum volume fraction, min, max = 1 0.999996 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0383467, Final residual = 5.99026e-11, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000117338, Final residual = 2.5477e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 4.7625e-05, Final residual = 5.67315e-13, No Iterations 1
+air min/max T 294.269 - 1800
+coal min/max T 294.45 - 757.242
+iron min/max T 294.45 - 757.242
+GAMG:  Solving for p_rgh, Initial residual = 8.65185e-06, Final residual = 2.16349e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 8.74973e-08, Final residual = 8.74973e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.16795e-05, Final residual = 4.77723e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.5024e-08, Final residual = 4.5024e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 8.23229e-06, Final residual = 4.55854e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.87121e-08, Final residual = 4.87121e-08, No Iterations 0
+ExecutionTime = 6.07 s  ClockTime = 6 s
+
+Courant Number mean: 0.00163065 max: 0.1644
+deltaT = 0.00643931
+Time = 0.0549248
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876485 1.25623e-08 1
+coal fraction, min, max = 0.0309887 9.70235e-16 0.999991
+iron fraction, min, max = 0.0925259 9.88653e-16 1
+Phase-sum volume fraction, min, max = 1 0.999923 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876487 1.37811e-08 1
+coal fraction, min, max = 0.0309885 9.62432e-16 0.999991
+iron fraction, min, max = 0.0925244 9.86175e-16 1
+Phase-sum volume fraction, min, max = 1 0.999932 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0422825, Final residual = 1.8691e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000147672, Final residual = 2.19476e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 8.24149e-05, Final residual = 1.37158e-12, No Iterations 1
+air min/max T 294.122 - 1800
+coal min/max T 294.269 - 896.003
+iron min/max T 294.269 - 896.003
+GAMG:  Solving for p_rgh, Initial residual = 4.63044e-05, Final residual = 1.91218e-07, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.67728e-07, Final residual = 2.40172e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.66896e-05, Final residual = 1.44679e-07, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.45833e-07, Final residual = 1.60104e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.25616e-05, Final residual = 9.02448e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 9.12564e-08, Final residual = 9.12564e-08, No Iterations 0
+ExecutionTime = 6.26 s  ClockTime = 6 s
+
+Courant Number mean: 0.00211615 max: 0.199789
+deltaT = 0.00643931
+Time = 0.0613641
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876491 1.64699e-08 1
+coal fraction, min, max = 0.0309879 -3.32671e-12 0.999991
+iron fraction, min, max = 0.0925201 9.84277e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.999282 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876496 1.92802e-08 1
+coal fraction, min, max = 0.0309873 -1.50443e-10 0.99999
+iron fraction, min, max = 0.092516 9.81809e-16 1
+Phase-sum volume fraction, min, max = 1 0.999608 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.104109, Final residual = 2.46638e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000106603, Final residual = 5.90758e-13, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000737056, Final residual = 1.17157e-09, No Iterations 1
+air min/max T 294.207 - 1800
+coal min/max T 294.122 - 1080.51
+iron min/max T 294.122 - 1080.51
+GAMG:  Solving for p_rgh, Initial residual = 5.2194e-05, Final residual = 3.67111e-07, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.73305e-07, Final residual = 2.80792e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.3961e-05, Final residual = 2.89997e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 3.35659e-08, Final residual = 3.35659e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 1.04014e-05, Final residual = 9.00292e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.73482e-08, Final residual = 8.73482e-08, No Iterations 0
+ExecutionTime = 6.44 s  ClockTime = 7 s
+
+Courant Number mean: 0.00231687 max: 0.217617
+deltaT = 0.00551941
+Time = 0.0668835
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876499 1.92971e-08 1
+coal fraction, min, max = 0.0309869 -9.79097e-10 0.99999
+iron fraction, min, max = 0.0925134 9.82031e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.99942 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876502 1.93141e-08 1
+coal fraction, min, max = 0.0309867 -1.533e-09 0.999989
+iron fraction, min, max = 0.0925104 9.79787e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.999623 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0963325, Final residual = 1.30973e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 7.14519e-05, Final residual = 1.27296e-12, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000849949, Final residual = 2.90443e-09, No Iterations 1
+air min/max T 294.438 - 1800
+coal min/max T 294.207 - 1290.68
+iron min/max T 294.207 - 1290.68
+GAMG:  Solving for p_rgh, Initial residual = 1.88952e-05, Final residual = 2.79741e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 6.36834e-08, Final residual = 6.36834e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.11101e-06, Final residual = 2.62519e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 2.63846e-08, Final residual = 2.63846e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 9.18905e-07, Final residual = 7.02197e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 6.81486e-08, Final residual = 6.81486e-08, No Iterations 0
+ExecutionTime = 6.63 s  ClockTime = 7 s
+
+Courant Number mean: 0.0022416 max: 0.198382
+deltaT = 0.00551941
+Time = 0.072403
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876505 2.00203e-08 1
+coal fraction, min, max = 0.0309863 -9.40452e-10 0.999989
+iron fraction, min, max = 0.0925084 9.77611e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.999714 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876508 2.07826e-08 1
+coal fraction, min, max = 0.030986 -1.39366e-09 0.999988
+iron fraction, min, max = 0.0925059 9.75212e-16 1
+Phase-sum volume fraction, min, max = 1 0.999734 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0995588, Final residual = 1.7211e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000142648, Final residual = 5.95583e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000553496, Final residual = 1.40544e-09, No Iterations 1
+air min/max T 293 - 1800
+coal min/max T 294.438 - 1479.9
+iron min/max T 294.438 - 1479.9
+GAMG:  Solving for p_rgh, Initial residual = 1.70692e-05, Final residual = 7.11894e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 8.76151e-08, Final residual = 8.76151e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.66554e-06, Final residual = 3.88049e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 3.14581e-08, Final residual = 3.14581e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 9.79707e-07, Final residual = 2.62113e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 2.27298e-08, Final residual = 2.27298e-08, No Iterations 0
+ExecutionTime = 6.81 s  ClockTime = 7 s
+
+Courant Number mean: 0.00241967 max: 0.210138
+deltaT = 0.00551941
+Time = 0.0779224
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876509 2.07943e-08 1
+coal fraction, min, max = 0.0309859 -5.21729e-12 0.999988
+iron fraction, min, max = 0.0925042 9.72869e-16 1
+Phase-sum volume fraction, min, max = 1 0.999868 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876512 2.08059e-08 1
+coal fraction, min, max = 0.0309858 -6.54377e-12 0.999987
+iron fraction, min, max = 0.0925022 9.70389e-16 1
+Phase-sum volume fraction, min, max = 1 0.999807 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0631449, Final residual = 2.35399e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.00022286, Final residual = 8.36902e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000285729, Final residual = 1.00872e-09, No Iterations 1
+air min/max T 289.51 - 1817.99
+coal min/max T 294.524 - 1662.07
+iron min/max T 294.524 - 1662.07
+GAMG:  Solving for p_rgh, Initial residual = 1.09073e-05, Final residual = 9.144e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 9.66297e-08, Final residual = 9.66297e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 2.45601e-05, Final residual = 1.5757e-07, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.37006e-07, Final residual = 2.77884e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.46598e-06, Final residual = 4.17612e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 4.24195e-08, Final residual = 4.24195e-08, No Iterations 0
+ExecutionTime = 7 s  ClockTime = 7 s
+
+Courant Number mean: 0.00266934 max: 0.224311
+deltaT = 0.00551941
+Time = 0.0834418
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876513 2.15302e-08 1
+coal fraction, min, max = 0.030986 -7.19578e-12 0.999987
+iron fraction, min, max = 0.0925001 9.68365e-16 1
+Phase-sum volume fraction, min, max = 1 0.999695 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876516 2.23039e-08 1
+coal fraction, min, max = 0.0309865 -7.74082e-12 0.999987
+iron fraction, min, max = 0.0924974 9.65956e-16 1
+Phase-sum volume fraction, min, max = 1 0.999703 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0909973, Final residual = 3.17997e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.000184162, Final residual = 3.36109e-11, No Iterations 1
+smoothSolver:  Solving for e.iron, Initial residual = 0.000517119, Final residual = 2.07745e-09, No Iterations 1
+air min/max T 293.067 - 1916.59
+coal min/max T 294.482 - 1817.99
+iron min/max T 294.482 - 1817.99
+GAMG:  Solving for p_rgh, Initial residual = 3.30338e-05, Final residual = 8.58385e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 1.39431e-07, Final residual = 3.11894e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 4.33342e-05, Final residual = 3.52921e-07, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.4641e-07, Final residual = 3.21447e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.79038e-05, Final residual = 5.44164e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 6.97205e-08, Final residual = 6.97205e-08, No Iterations 0
+ExecutionTime = 7.19 s  ClockTime = 7 s
+
+Courant Number mean: 0.00285617 max: 0.233061
+deltaT = 0.00551941
+Time = 0.0889612
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876525 5.8322e-08 1
+coal fraction, min, max = 0.0309781 9.47005e-16 0.999988
+iron fraction, min, max = 0.092496 9.71447e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.999025 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876535 9.43637e-08 1
+coal fraction, min, max = 0.0309703 9.34587e-16 0.999995
+iron fraction, min, max = 0.0924942 9.65978e-16 1
+Phase-sum volume fraction, min, max = 1 0.999702 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0879803, Final residual = 3.45143e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.00144131, Final residual = 4.16066e-12, No Iterations 2
+smoothSolver:  Solving for e.iron, Initial residual = 0.000399749, Final residual = 3.84183e-09, No Iterations 1
+air min/max T 294.618 - 1956.56
+coal min/max T 294.53 - 1916.59
+iron min/max T 294.53 - 1916.59
+GAMG:  Solving for p_rgh, Initial residual = 5.76608e-05, Final residual = 2.65081e-07, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 4.15595e-07, Final residual = 7.24334e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 0.000157793, Final residual = 3.58399e-07, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 2.83977e-07, Final residual = 4.91753e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 0.000477927, Final residual = 2.2999e-06, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.98906e-06, Final residual = 3.04856e-08, No Iterations 3
+ExecutionTime = 7.38 s  ClockTime = 8 s
+
+Courant Number mean: 0.00343479 max: 0.245528
+deltaT = 0.00551941
+Time = 0.0944806
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876575 1.07258e-07 1
+coal fraction, min, max = 0.0309345 9.52782e-16 0.999997
+iron fraction, min, max = 0.0924855 -4.29989e-07 1
+Phase-sum volume fraction, min, max = 0.999995 0.988294 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876617 9.64876e-08 1
+coal fraction, min, max = 0.030905 9.41672e-16 0.999997
+iron fraction, min, max = 0.0924757 -0.000118767 1
+Phase-sum volume fraction, min, max = 0.999998 0.993343 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.539682, Final residual = 1.23432e-10, No Iterations 3
+smoothSolver:  Solving for e.coal, Initial residual = 0.0455297, Final residual = 2.17114e-10, No Iterations 2
+smoothSolver:  Solving for e.iron, Initial residual = 0.00383718, Final residual = 2.69416e-13, No Iterations 2
+air min/max T 288.207 - 1965.04
+coal min/max T 294.618 - 1956.56
+iron min/max T 294.618 - 1956.56
+GAMG:  Solving for p_rgh, Initial residual = 0.00117977, Final residual = 1.61201e-06, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 1.1202e-07, Final residual = 1.0795e-08, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 5.78655e-05, Final residual = 5.3348e-07, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 3.93078e-06, Final residual = 8.31076e-08, No Iterations 2
+GAMG:  Solving for p_rgh, Initial residual = 0.0465367, Final residual = 2.09534e-05, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.31388e-06, Final residual = 3.99024e-08, No Iterations 2
+ExecutionTime = 7.58 s  ClockTime = 8 s
+
+Courant Number mean: 0.0101567 max: 8.35277
+deltaT = 0.000131415
+Time = 0.094612
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876641 6.26389e-08 1
+coal fraction, min, max = 0.0309058 -7.88559e-13 0.999997
+iron fraction, min, max = 0.0924496 -2.11606e-05 1
+Phase-sum volume fraction, min, max = 0.999996 0.992037 1.00012
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876665 1.54762e-08 1
+coal fraction, min, max = 0.0309048 -4.03432e-12 0.999995
+iron fraction, min, max = 0.0924275 -3.59302e-05 1
+Phase-sum volume fraction, min, max = 0.999997 0.992253 1.00003
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.0599323, Final residual = 2.51722e-17, No Iterations 2
+smoothSolver:  Solving for e.coal, Initial residual = 0.121983, Final residual = 9.79232e-13, No Iterations 2
+smoothSolver:  Solving for e.iron, Initial residual = 0.383865, Final residual = 1.10356e-09, No Iterations 2
+air min/max T 291.254 - 1964.88
+coal min/max T 294.46 - 4062.92
+iron min/max T 294.46 - 3546.7
+GAMG:  Solving for p_rgh, Initial residual = 6.96428e-06, Final residual = 8.1166e-09, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 1.42972e-10, Final residual = 1.42972e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.84832e-08, Final residual = 5.84832e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 5.84832e-08, Final residual = 5.84832e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.15217e-08, Final residual = 6.15217e-08, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 6.15217e-08, Final residual = 6.15217e-08, No Iterations 0
+ExecutionTime = 7.76 s  ClockTime = 8 s
+
+Courant Number mean: 0.000408841 max: 0.539041
+deltaT = 4.85405e-05
+Time = 0.0946605
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876661 4.13958e-08 1
+coal fraction, min, max = 0.0309041 -1.77245e-08 0.999995
+iron fraction, min, max = 0.0924339 9.99764e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.998546 1.00005
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876658 6.47427e-08 1
+coal fraction, min, max = 0.0309032 -2.63201e-08 0.999995
+iron fraction, min, max = 0.0924377 9.99662e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.998174 1
+Constructing momentum equations
+smoothSolver:  Solving for e.air, Initial residual = 0.210028, Final residual = 1.07836e-08, No Iterations 10
+smoothSolver:  Solving for e.coal, Initial residual = 0.120434, Final residual = 7.89738e-11, No Iterations 2
+smoothSolver:  Solving for e.iron, Initial residual = 0.977049, Final residual = 1.61527e-10, No Iterations 2
+air min/max T -1275.26 - 6270.39
+coal min/max T 294.457 - 511785
+iron min/max T 152.742 - 334327
+GAMG:  Solving for p_rgh, Initial residual = 8.78176e-06, Final residual = 2.44259e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 2.21288e-10, Final residual = 2.21288e-10, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 0.287156, Final residual = 6.69858e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 3.28253e-11, Final residual = 3.28253e-11, No Iterations 0
+GAMG:  Solving for p_rgh, Initial residual = 0.00123422, Final residual = 1.6219e-10, No Iterations 1
+GAMG:  Solving for p_rgh, Initial residual = 8.25042e-10, Final residual = 8.25042e-10, No Iterations 0
+ExecutionTime = 7.96 s  ClockTime = 8 s
+
+Courant Number mean: 0.000216665 max: 0.252615
+deltaT = 3.84133e-05
+Time = 0.094699
+
+PIMPLE: iteration 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876661 2.05828e-07 1
+coal fraction, min, max = 0.0309027 -5.08984e-06 0.999996
+iron fraction, min, max = 0.0924358 9.99809e-16 1
+Phase-sum volume fraction, min, max = 0.999999 0.998835 1
+MULES: Solving for alpha.air
+MULES: Solving for alpha.coal
+MULES: Solving for alpha.iron
+air fraction, min, max = 0.876664 3.5095e-07 1
+coal fraction, min, max = 0.0309021 -9.93068e-06 0.999996
+iron fraction, min, max = 0.0924334 9.99731e-16 1
+Phase-sum volume fraction, min, max = 1 0.99972 1.00001
+Constructing momentum equations
+[stack trace]
+=============
+#1  Foam::sigFpe::sigHandler(int) in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+#2  ? in /lib/x86_64-linux-gnu/libc.so.6
+#3  ? in /lib/x86_64-linux-gnu/libm.so.6
+#4  Foam::sqrt(Foam::Field<double>&, Foam::UList<double> const&) in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libOpenFOAM.so
+#5  void Foam::sqrt<Foam::fvPatchField, Foam::volMesh>(Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>&, Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> const&) in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so
+#6  Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > Foam::sqrt<Foam::fvPatchField, Foam::volMesh>(Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > const&) in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libfiniteVolume.so
+#7  Foam::heatTransferModels::RanzMarshall::K(double) const in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so
+#8  Foam::heatTransferModel::K() const in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so
+#9  Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > Foam::BlendedInterfacialModel<Foam::heatTransferModel>::evaluate<double, Foam::fvPatchField, Foam::volMesh>(Foam::tmp<Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh> > (Foam::heatTransferModel::*)() const, Foam::word const&, Foam::dimensionSet const&, bool) const in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so
+#10  Foam::BlendedInterfacialModel<Foam::heatTransferModel>::K() const in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so
+#11  Foam::OneResistanceHeatTransferPhaseSystem<Foam::MomentumTransferPhaseSystem<Foam::multiphaseSystem> >::heatTransfer() const in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/lib/libreactingMultiphaseSystem.so
+#12  ? in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/bin/reactingMultiphaseEulerFoam
+#13  ? in /lib/x86_64-linux-gnu/libc.so.6
+#14  __libc_start_main in /lib/x86_64-linux-gnu/libc.so.6
+#15  ? in /usr/lib/openfoam/openfoam2312/platforms/linux64GccDPInt32Opt/bin/reactingMultiphaseEulerFoam
+=============
+Floating point exception (core dumped)

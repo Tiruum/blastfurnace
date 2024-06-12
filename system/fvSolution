@@ -16,52 +16,69 @@ FoamFile
 
 solvers
 {
-    "rho.*"
+    "alpha.*"
     {
-        solver          diagonal;
+        nAlphaCorr      1;
+        nAlphaSubCycles 2;
     }
-
-    p
+    
+    "(e|h).*"
     {
-        solver           PCG;
-        preconditioner   DIC;
-        tolerance        1e-6;
-        relTol           0.1;
-    }
-
-    pFinal
-    {
-        $p;
-        tolerance        1e-6;
-        relTol           0.0;
-    }
-
-    "(U|h|k|epsilon)"
-    {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-6;
-        relTol          0.1;
-    }
-
-    "(U|h|k|epsilon)Final"
-    {
-        $U;
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-8;
         relTol          0;
+        minIter         1;
+        maxIter         10;
     }
 
-    Yi
+    p_rgh
     {
-        $hFinal;
+        solver          GAMG;
+        tolerance       1e-7;
+        relTol          0.01;
+        smoother        GaussSeidel;
+    }
+
+    p_rghFinal
+    {
+        $p_rgh;
+        tolerance       1e-7;
+        relTol          0;
+        maxIter         30;
+    }
+    
+    "(k|epsilon|omega|nut)"
+    {
+        solver          GAMG;
+        tolerance       1e-7;
+        relTol          0.01;
+        smoother        GaussSeidel;
+    }
+
+    "U.*"
+    {
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-5;
+        relTol          0;
+        minIter         1;
     }
 }
 
 PIMPLE
 {
-    momentumPredictor no;
-    nOuterCorrectors  1;
-    nCorrectors       2;
-    nNonOrthogonalCorrectors 0;
+    nOuterCorrectors 1;
+    nCorrectors      3;
+    nNonOrthogonalCorrectors 1;
+}
+
+relaxationFactors
+{
+    equations
+    {
+        ".*"            1;
+    }
 }
 
 

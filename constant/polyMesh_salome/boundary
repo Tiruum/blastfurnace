@@ -8,7 +8,7 @@
 FoamFile
 {
     version     2.0;
-    format      binary;
+    format      ascii;
     arch        "LSB;label=32;scalar=64";
     class       polyBoundaryMesh;
     location    "constant/polyMesh";
@@ -18,38 +18,37 @@ FoamFile
 
 5
 (
-    inlet
+    empty
     {
-        type            patch;
-        nFaces          2;
-        startFace       11986;
-    }
-    outlet
-    {
-        type            patch;
-        nFaces          10;
-        startFace       11988;
+        type            empty;
+        inGroups        1(empty);
+        nFaces          19663;
+        startFace       48571;
     }
     walls
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          232;
-        startFace       11998;
+        nFaces          788;
+        startFace       68234;
+    }
+    inlet
+    {
+        type            patch;
+        nFaces          9;
+        startFace       69022;
     }
     symmetry
     {
         type            symmetryPlane;
-        inGroups        1(symmetryPlane);
-        nFaces          152;
-        startFace       12230;
+        nFaces          586;
+        startFace       69031;
     }
-    empty
+    outlet
     {
-        type            empty;
-        inGroups        1(empty);
-        nFaces          12184;
-        startFace       12382;
+        type            patch;
+        nFaces          36;
+        startFace       69617;
     }
 )
 

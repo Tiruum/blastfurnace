@@ -16,7 +16,7 @@ FoamFile
 
 ddtSchemes
 {
-    default         Euler;
+    default         CrankNicolson 0.9;
 }
 
 gradSchemes
@@ -26,21 +26,32 @@ gradSchemes
 
 divSchemes
 {
-    default         none;
+    default                         none;
 
-    div(phi,U)      Gauss limitedLinearV 1;
+    div(phi,alpha.air)              Gauss vanLeer;
+    div(phi,alpha.coal)             Gauss vanLeer;
+    div(phi,alpha.iron)             Gauss vanLeer;
+    div(phir,alpha.air,alpha.coal)  Gauss vanLeer;
+    div(phir,alpha.coal,alpha.air)  Gauss vanLeer;
+    div(phir,alpha.air,alpha.iron)  Gauss vanLeer;
+    div(phir,alpha.iron,alpha.air)  Gauss vanLeer;
+    div(phir,alpha.coal,alpha.iron) Gauss vanLeer;
+    div(phir,alpha.iron,alpha.coal) Gauss vanLeer;
 
-    div(phi,Yi_h)   Gauss limitedLinear 1;
-    div(phi,K)      Gauss limitedLinear 1;
-    div(phid,p)     Gauss limitedLinear 1;
-    div(phi,epsilon) Gauss limitedLinear 1;
-    div(phi,k)      Gauss limitedLinear 1;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
+    "div\(alphaRhoPhi.*,U.*\)"      Gauss linearUpwind grad(U);
+    "div\(phi.*,U.*\)"              Gauss linearUpwind grad(U);
+    
+    "div\(alphaRhoPhi.*,(h|e).*\)"  Gauss limitedLinear 1;
+    "div\(alphaRhoPhi.*,K.*\)"      Gauss limitedLinear 1;
+    "div\(alphaPhi.*,p\)"           Gauss limitedLinear 1;
+
+    "div\(\(\(\(alpha.*\*thermo:rho.*\)*nuEff.*\)\*dev2\(T\(grad\(U.*\)\)\)\)\)" Gauss linear;
 }
 
 laplacianSchemes
 {
-    default         Gauss linear orthogonal;
+    default         Gauss linear limited 1;
+    // Если поставить uncorrected, то будет Negative initial temperature T0: -192.611
 }
 
 interpolationSchemes
@@ -50,8 +61,10 @@ interpolationSchemes
 
 snGradSchemes
 {
-    default         orthogonal;
+    default         corrected; // У меня неортогональная сетка, надобно corrected
+    // Если поставить uncorrected, то будет Negative initial temperature T0: -192.611
 }
 
 
 // ************************************************************************* //
+

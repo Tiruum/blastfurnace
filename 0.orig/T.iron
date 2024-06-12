@@ -9,13 +9,37 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       uniformDimensionedVectorField;
-    object      g;
+    class       volScalarField;
+    object      T.iron;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -2 0 0 0 0];
-value           (0 0 -9.81);
+dimensions      [0 0 0 1 0 0 0];
+internalField   uniform 300; // Начальная температура в Кельвинах
 
+boundaryField
+{
+    inlet
+    {
+        type            zeroGradient;
+    }
+    outlet
+    {
+        type            zeroGradient;
+    }
+    walls
+    {
+        type               zeroGradient;
+    }
+    
+    empty
+    {
+        type            empty;
+    }
+    
+    symmetry
+    {
+        type            symmetryPlane;
+    }
+}
 
-// ************************************************************************* //

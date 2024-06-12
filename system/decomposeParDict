@@ -1,10 +1,11 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2312                                 |
-|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|  \\    /   O peration     | Version: 7                                      |
+|   \\  /    A nd           | Web: www.OpenFOAM.com                           |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
+
 FoamFile
 {
     version     2.0;
@@ -12,11 +13,12 @@ FoamFile
     class       dictionary;
     object      decomposeParDict;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-numberOfSubdomains 4;
+numberOfSubdomains 10;
 
-method          scotch;
+method          simple;
 
-
-// ************************************************************************* //
+coeffs
+{
+    n           (2 1 5);
+}

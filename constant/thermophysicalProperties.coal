@@ -1,0 +1,52 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      thermophysicalProperties.coal;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+thermoType
+{
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState rhoConst;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
+
+mixture
+{
+    specie
+    {
+    	nMoles          1;
+        molWeight       12.01;  // Молекулярная масса угля [г/моль]
+    }
+    equationOfState
+    {
+        rho        1900;   // Плотность угля при стандартных условиях [кг/м³]
+    }
+    thermodynamics
+    {
+        Cp              1200;  // Удельная теплоемкость угля [Дж/(кг·К)]
+        Hf              0;     // Энтальпия образования [Дж/кг]
+    }
+    transport
+    {
+        mu          0.05;
+        Pr          2.5;
+    }
+}
+
+// ************************************************************************* //
+

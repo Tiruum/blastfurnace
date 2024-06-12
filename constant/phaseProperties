@@ -1,0 +1,267 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      phaseProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type            basicMultiphaseSystem;
+
+phases          (air coal iron);
+
+air
+{
+    type            purePhaseModel;
+    diameterModel   constant;
+    constantCoeffs
+    {
+        d               1e-3;   // Средний диаметр частиц угля (предположительное значение)
+    }
+
+    residualAlpha   1e-6;  // Остаточная объемная доля
+}
+
+coal
+{
+    type            purePhaseModel;
+    diameterModel   constant;
+    constantCoeffs
+    {
+        d               1e-3;   // Средний диаметр частиц угля (предположительное значение)
+    }
+
+    residualAlpha   1e-6;  // Остаточная объемная доля
+}
+
+iron
+{
+    type            purePhaseModel;
+    diameterModel   constant;
+    constantCoeffs
+    {
+        d               1e-3;   // Средний диаметр частиц железа (предположительное значение)
+    }
+
+    residualAlpha   1e-6;  // Остаточная объемная доля
+}
+
+blending
+{
+    default
+    {
+        type            linear;
+        minFullyContinuousAlpha.air 0.7;
+        minPartlyContinuousAlpha.air 0.3;
+        minFullyContinuousAlpha.coal 0.7;
+        minPartlyContinuousAlpha.coal 0.3;
+        minFullyContinuousAlpha.iron 0.7;
+        minPartlyContinuousAlpha.iron 0.3;
+    }
+}
+
+surfaceTension
+(
+    (air and coal)
+    {
+        type            constant;
+        sigma           0;  // Поверхностное натяжение между воздухом и углем (предположительное значение)
+    }
+
+    (air and iron)
+    {
+        type            constant;
+        sigma           0;  // Поверхностное натяжение между воздухом и железом (предположительное значение)
+    }
+
+    (coal and iron)
+    {
+        type            constant;
+        sigma           0;  // Поверхностное натяжение между углем и железом (предположительное значение)
+    }
+);
+
+interfaceCompression
+(
+    (air and coal)     0
+    (air and iron)       0
+    (coal and iron)   0
+);
+
+aspectRatio
+();
+
+drag
+(
+    (air in coal)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (coal in air)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (air in iron)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (iron in air)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (coal in iron)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+
+    (iron in coal)
+    {
+        type            Ergun;
+
+        residualRe      1e-3;
+        swarmCorrection
+        {
+            type        none;
+        }
+    }
+);
+
+virtualMass
+(
+    (air in coal)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (coal in air)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (air in iron)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (iron in air)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (coal in iron)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+
+    (iron in coal)
+    {
+        type            constantCoefficient;
+        Cvm             0.5;
+    }
+);
+
+heatTransfer
+(
+    (air in coal)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+
+    (coal in air)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+
+    (air in iron)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+
+    (iron in air)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+
+    (coal in iron)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+
+    (iron in coal)
+    {
+        type            RanzMarshall;
+        residualAlpha   1e-4;
+    }
+);
+
+lift
+();
+
+phaseTransfer
+();
+
+wallLubrication
+();
+
+turbulentDispersion
+();
+
+// Minimum allowable pressure
+pMin            10000;
+
+
+
+// ************************************************************************* //
+

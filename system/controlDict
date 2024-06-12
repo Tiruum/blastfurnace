@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     reactingFoam;
+application     reactingMultiphaseEulerFoam;
 
 startFrom       startTime;
 
@@ -22,17 +22,17 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.5;
+endTime         5;
 
-deltaT          1e-6;
+deltaT          1e-2;
 
 writeControl    adjustable;
 
-writeInterval   0.05;
+writeInterval   1e-1;
 
 purgeWrite      0;
 
-writeFormat     ascii;
+writeFormat     binary;
 
 writePrecision  6;
 
@@ -42,8 +42,13 @@ timeFormat      general;
 
 timePrecision   6;
 
-runTimeModifiable true;
+runTimeModifiable yes;
 
 adjustTimeStep  yes;
 
-maxCo           0.4;
+maxCo           0.2;
+
+maxDeltaT       1;
+
+
+// ************************************************************************* //
